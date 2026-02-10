@@ -7,83 +7,54 @@
     <style>
         body { background-color: #fdf6f6; font-family: 'Georgia', serif; color: #4a4a4a; display: flex; flex-direction: column; align-items: center; padding: 40px 15px; margin: 0; }
         .letter-container { max-width: 650px; background: white; padding: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; position: relative; }
-        
         h1 { color: #d18d8d; text-align: center; font-weight: normal; margin-bottom: 10px; font-size: 2.2em; }
         .nickname-header { text-align: center; color: #a67c7c; font-style: italic; margin-bottom: 40px; font-size: 1.1em; }
-        
-        .polaroid { background: white; padding: 10px 10px 30px 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 80%; margin: 35px auto; border: 1px solid #f0f0f0; transition: 0.3s; }
+        .polaroid { background: white; padding: 10px 10px 30px 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 85%; margin: 35px auto; border: 1px solid #f0f0f0; }
         .polaroid img { width: 100%; height: auto; display: block; }
-        .caption { text-align: center; font-family: 'Brush Script MT', cursive; margin-top: 15px; color: #d18d8d; font-size: 1.3em; }
-
-        /* Rotating the photos slightly for a scrapbook feel */
-        .rot-left { transform: rotate(-2deg); }
-        .rot-right { transform: rotate(2deg); }
-
+        .caption { text-align: center; font-family: 'Brush Script MT', cursive; margin-top: 15px; color: #d18d8d; font-size: 1.4em; }
         .content { line-height: 2; white-space: pre-wrap; font-size: 1.15em; text-align: justify; margin-top: 20px; }
         .signature { margin-top: 50px; text-align: center; font-size: 1.5em; color: #d18d8d; font-family: 'Brush Script MT', cursive; }
-
         .music-player { position: fixed; bottom: 20px; right: 20px; background: #d18d8d; color: white; padding: 12px 25px; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2); border: none; z-index: 100; }
     </style>
 </head>
 <body>
-
 <div class="letter-container">
     <h1>Thinking of You</h1>
     <div class="nickname-header">For my dearest Mysu</div>
-
-    <div class="polaroid rot-left">
-        <img src="photo5.jpg" alt="Memory 1">
+    <div class="polaroid" style="transform: rotate(-2deg);">
+        <img src="photo1.jpg">
         <div class="caption">The best day in Saket...</div>
     </div>
-
     <div class="content">
 My Dearest Mysu,
-
 I was sitting here thinking about us today, and my mind kept drifting back to that day we spent at the mall in Saket. It’s funny how, of all the things we’ve done, that afternoon at the arcade stands out so clearly. I can still hear the chaos of the games, but mostly, I just remember your laugh over all of it.
     </div>
-
-    <div class="polaroid rot-right">
-        <img src="photo2.jpg" alt="Memory 2">
+    <div class="polaroid" style="transform: rotate(2deg);">
+        <img src="photo2.jpg">
         <div class="caption">I love this smile.</div>
     </div>
-
     <div class="content">
 I keep picturing the way you looked when you were focused on winning—that competitive spark in your eyes that I love so much. In that moment, surrounded by everyone else in Delhi, it felt like there was a literal bubble around the two of us.
     </div>
-
-    <div class="polaroid rot-left">
-        <img src="photo3.jpg" alt="Memory 3">
+    <div class="polaroid" style="transform: rotate(-2deg);">
+        <img src="photo3.jpg">
     </div>
-
     <div class="content">
-Being away from you right now is hard, but I close my eyes and I’m back in Saket, holding your hand and feeling like the luckiest person in the city. I built this little space for you so you’d have a place to come whenever the distance feels a bit too heavy. 
+Being away from you right now is hard, but I close my eyes and I’m back in Saket, holding your hand and feeling like the luckiest person in the city. I built this little space for you so you’d have a place to come whenever the distance feels a bit too heavy.
     </div>
-
-    <div class="polaroid rot-right">
-        <img src="photo4.jpg" alt="Memory 4">
+    <div class="polaroid" style="transform: rotate(2deg);">
+        <img src="photo4.jpg">
     </div>
-
     <div class="content">
 Every day we are apart is just a countdown until the next time we’re making memories like that again. I’m counting the days until our next "arcade date."
     </div>
-
-    <div class="polaroid rot-left">
-        <img src="photo1.jpg" alt="Memory 5">
-        <div class="caption">Counting down the days...</div>
+    <div class="polaroid" style="transform: rotate(-2deg);">
+        <img src="photo5.jpg">
     </div>
-
-    <div class="signature">
-        Always yours, <br>
-        Bubu
-    </div>
+    <div class="signature">Always yours, <br>Bubu</div>
 </div>
-
-<audio id="loveSong" loop>
-  <source src="your-song.mp3" type="audio/mpeg">
-</audio>
-
+<audio id="loveSong" loop><source src="your-song.mp3" type="audio/mpeg"></audio>
 <button class="music-player" onclick="toggleMusic()">🎵 Play Our Song</button>
-
 <script>
   function toggleMusic() {
     var song = document.getElementById("loveSong");
@@ -92,6 +63,5 @@ Every day we are apart is just a countdown until the next time we’re making me
     else { song.pause(); btn.innerHTML = "Play Music 🎵"; }
   }
 </script>
-
 </body>
 </html>
