@@ -19,10 +19,11 @@
         .signature { margin-top: 50px; text-align: center; font-size: 1.5em; color: #d18d8d; font-family: 'Brush Script MT', cursive; }
 
         /* Music Button Styling */
-        .music-control { text-align: center; margin-top: 30px; padding: 20px; border-top: 1px solid #f0f0f0; }
-        .play-btn { background-color: #d18d8d; color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; font-size: 1em; transition: 0.3s; box-shadow: 0 4px 10px rgba(209, 141, 141, 0.3); }
-        .play-btn:hover { background-color: #b87676; transform: scale(1.05); }
-        #player { display: none; }
+        .music-control { text-align: center; margin-top: 30px; padding: 20px; border-top: 1px solid #f0f0f0; width: 100%; }
+        .play-btn { background-color: #d18d8d; color: white; border: none; padding: 15px 35px; border-radius: 30px; cursor: pointer; font-size: 1.1em; transition: 0.3s; box-shadow: 0 4px 15px rgba(209, 141, 141, 0.4); font-family: 'Georgia', serif; }
+        .play-btn:active { transform: scale(0.95); }
+        #status-text { color: #a67c7c; font-size: 0.9em; margin-top: 10px; font-style: italic; }
+        #player-container { height: 0; width: 0; overflow: hidden; position: absolute; }
     </style>
 </head>
 <body>
@@ -78,9 +79,11 @@ Every day we are apart is just a countdown until the next time we’re making me
     </div>
 
     <div class="music-control">
-        <p style="color: #d18d8d; font-style: italic; margin-bottom: 15px;">Click to play our song, Mysu...</p>
         <button class="play-btn" onclick="togglePlay()" id="btnText">🎵 Play Our Song</button>
-        <div id="player"></div>
+        <p id="status-text">Make sure your volume is up!</p>
+        <div id="player-container">
+            <div id="player"></div>
+        </div>
     </div>
 </div>
 
@@ -96,28 +99,41 @@ Every day we are apart is just a countdown until the next time we’re making me
     var player;
     function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-            height: '0',
-            width: '0',
+            height: '1',
+            width: '1',
             videoId: youtubeVideoID,
             playerVars: { 
                 'autoplay': 0, 
                 'loop': 1, 
                 'playlist': youtubeVideoID,
-                'controls': 0,
-                'showinfo': 0,
-                'rel': 0
+                'playsinline': 1,
+                'controls': 0
+            },
+            events: {
+                'onStateChange': onPlayerStateChange
             }
         });
     }
 
+    function onPlayerStateChange(event) {
+        var status = document.getElementById("status-text");
+        if (event.data == YT.PlayerState.PLAYING) {
+            status.innerHTML = "🎶 Now playing: JVKE - her";
+        }
+    }
+
     function togglePlay() {
         var btn = document.getElementById("btnText");
+        var status = document.getElementById("status-text");
+        
         if (player && player.getPlayerState() === 1) {
             player.pauseVideo();
             btn.innerHTML = "🎵 Play Our Song";
+            status.innerHTML = "Music paused.";
         } else if (player) {
             player.playVideo();
             btn.innerHTML = "⏸ Pause Our Song";
+            status.innerHTML = "Loading music...";
         }
     }
 </script>
